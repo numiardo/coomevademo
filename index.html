@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Coomeva - Envío API</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <section class="panel panel-left">
+        <header class="top-bar">
+          <div class="logo-wrap">
+            <img src="./images/coomeva.png" alt="Coomeva" class="logo" />
+          </div>
+          <div class="header-text">
+            <p class="header-title">Panel de Envío</p>
+            <p class="header-subtitle">Interfaz tecnológica - HTTP</p>
+          </div>
+        </header>
+
+        <div class="card">
+          <h2>Mensaje de Prueba</h2>
+          <p class="muted">Se enviará el mensaje: <strong>Hola</strong></p>
+          <div class="meta">
+            <span>POST</span>
+            <span>stream=false</span>
+          </div>
+          <button id="sendButton" class="primary-button">Enviar</button>
+          <p id="status" class="status">Listo para enviar.</p>
+        </div>
+
+        <div class="card small">
+          <h3>Detalles del Request</h3>
+          <ul>
+            <li>Content-Type: application/json</li>
+            <li>Origin: journeybuilder.numia.co</li>
+            <li>x-api-key: **************</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="panel panel-right">
+        <div class="console-header">
+          <span class="dot dot-red"></span>
+          <span class="dot dot-yellow"></span>
+          <span class="dot dot-green"></span>
+          <span class="console-title">Consola de Respuesta</span>
+        </div>
+        <pre id="consoleOutput" class="console-output">Esperando respuesta...</pre>
+      </section>
+    </div>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
