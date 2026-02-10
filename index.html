@@ -15,7 +15,7 @@
           </div>
           <div class="header-text">
             <p class="header-title">Panel de Envío</p>
-            <p class="header-subtitle">Interfaz tecnológica - HTTP</p>
+            <p class="header-subtitle">Interfaz Journey Builder</p>
           </div>
         </header>
 
@@ -35,14 +35,24 @@
             </label>
             <label class="field">
               <span>Password</span>
-              <input
-                type="password"
-                id="password"
-                name="password"
-                autocomplete="current-password"
-                placeholder="Ingresa tu password"
-                required
-              />
+              <div class="password-field">
+                <input
+                  type="password"
+                  id="password"
+                  name="password"
+                  autocomplete="current-password"
+                  placeholder="Ingresa tu password"
+                  required
+                />
+                <button
+                  id="togglePassword"
+                  class="icon-button"
+                  type="button"
+                  aria-label="Mostrar u ocultar password"
+                >
+                  Ver
+                </button>
+              </div>
             </label>
             <button id="loginButton" class="primary-button" type="submit">
               Iniciar sesión
@@ -52,67 +62,147 @@
         </div>
 
         <div id="servicesPanel" class="card services hidden">
-          <p class="user-welcome">Bienvenido, Eduardo Corona (Convenio A)</p>
-          <h3>Servicios disponibles</h3>
-          <div class="services-list">
-            <button id="eventsButton" class="service-button" type="button">
-              Eventos
-            </button>
-            <button
-              id="bankCertificateButton"
-              class="service-button"
-              type="button"
-            >
-              Certificado Bancario
-            </button>
+          <div id="servicesStep" class="services-step">
+            <div class="services-list">
+              <button id="eventsButton" class="service-button" type="button">
+                Eventos
+              </button>
+              <button
+                id="bankCertificateButton"
+                class="service-button"
+                type="button"
+              >
+                Certificado Bancario
+              </button>
+            </div>
           </div>
           <div id="eventsSection" class="events-section hidden">
             <h4 class="section-title">Eventos disponibles</h4>
-            <div id="eventsList" class="events-list"></div>
+            <div class="table-wrap">
+              <table class="events-table">
+                <thead>
+                  <tr>
+                    <th>Evento</th>
+                    <th>Cupos</th>
+                    <th>Convenio</th>
+                    <th>Precio</th>
+                    <th>Boletos</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody id="eventsList"></tbody>
+              </table>
+            </div>
+            <button id="backToServices" class="secondary-button" type="button">
+              Regresar
+            </button>
+          </div>
+          <div id="bankCertificateStep" class="bank-step hidden">
+            <h4 class="section-title">Certificado bancario</h4>
+            <p class="muted">Ingresa tu cédula para validar la solicitud.</p>
+            <div class="form">
+              <label class="field">
+                <span>Cédula</span>
+                <input
+                  id="cedulaInput"
+                  type="text"
+                  inputmode="numeric"
+                  placeholder="Escribe tu cédula"
+                />
+              </label>
+              <button id="validateCedulaButton" class="primary-button" type="button">
+                Continuar
+              </button>
+              <button
+                id="backToServicesFromBank"
+                class="secondary-button"
+                type="button"
+              >
+                Regresar
+              </button>
+            </div>
+          </div>
+          <div id="bankDeliveryStep" class="bank-step hidden">
+            <h4 class="section-title">Entrega del certificado</h4>
+            <p class="muted">Elige cómo deseas recibir tu certificado.</p>
+            <div class="delivery-actions">
+              <button id="backToCedula" class="secondary-button" type="button">
+                Regresar
+              </button>
+              <div class="delivery-right">
+                <button id="bankEmailButton" class="primary-button" type="button">
+                  Enviar por email
+                </button>
+                <a
+                  id="bankDownloadLink"
+                  class="secondary-button"
+                  href="./assets/Certificacion_Bancaria_Eduardo%20Corona.pdf"
+                  download="Certificacion_Bancaria_Eduardo_Corona.pdf"
+                >
+                  Descargar
+                </a>
+              </div>
+            </div>
           </div>
           <div id="ticketForm" class="ticket-form hidden">
+            <p id="userWelcome" class="user-welcome"></p>
             <h4 class="section-title">Solicitud de boletos</h4>
-            <p id="ticketSummary" class="ticket-summary"></p>
             <div class="info-grid">
-              <div class="info-item">
+            <div class="info-item">
                 <span class="info-label">Nombre</span>
-                <span class="info-value">Eduardo</span>
+              <span id="infoNombre" class="info-value">-</span>
               </div>
               <div class="info-item">
                 <span class="info-label">Apellido</span>
-                <span class="info-value">Corona</span>
+              <span id="infoApellido" class="info-value">-</span>
               </div>
               <div class="info-item">
                 <span class="info-label">Convenio</span>
-                <span class="info-value">A</span>
+              <span id="infoConvenio" class="info-value">-</span>
               </div>
               <div class="info-item">
                 <span class="info-label">Email</span>
-                <span class="info-value">ecorona@numia.co</span>
+              <span id="infoEmail" class="info-value">-</span>
               </div>
               <div class="info-item">
                 <span class="info-label">Celular</span>
-                <span class="info-value">5560404738</span>
+              <span id="infoCelular" class="info-value">-</span>
               </div>
             </div>
-            <button class="primary-button" type="button">
-              Continuar
-            </button>
+            <div class="form-actions">
+              <button
+                id="ticketContinueButton"
+                class="primary-button"
+                type="button"
+              >
+                Continuar
+              </button>
+              <button
+                id="backToEventsFromForm"
+                class="secondary-button"
+                type="button"
+              >
+                Regresar
+              </button>
+            </div>
+          </div>
+          <div id="orderSummaryStep" class="order-summary hidden">
+            <p class="section-title">Resumen del pedido</p>
+            <p id="orderSummary" class="ticket-summary"></p>
             <p class="helper">
-              No hay cambios ni devoluciones. Recibirás los boletos digitales
+              No habrá cambios ni devoluciones. Recibirás los boletos digitales
               vía email.
             </p>
+            <button id="finalizeButton" class="primary-button" type="button">
+              Finalizar
+            </button>
+            <button id="backToTicketForm" class="secondary-button" type="button">
+              Regresar
+            </button>
           </div>
         </div>
 
-        <div class="card small">
-          <h3>Detalles de Validación</h3>
-          <ul>
-            <li>Fuente: NocoDB</li>
-            <li>Tabla: usuarios</li>
-            <li>Conectado con Journey Builder</li>
-          </ul>
-        </div>
+        
       </section>
 
       <section class="panel panel-right">
@@ -124,6 +214,23 @@
         </div>
         <pre id="consoleOutput" class="console-output">Esperando respuesta...</pre>
       </section>
+    </div>
+
+    <div id="finishModal" class="modal hidden" aria-hidden="true">
+      <div class="modal-card" role="dialog" aria-modal="true">
+        <h3>Gracias por usar las pantallas interactivas</h3>
+        <p class="muted">
+          ¿Qué deseas hacer a continuación?
+        </p>
+        <div class="modal-actions">
+          <button id="goHomeButton" class="primary-button" type="button">
+            Ir al inicio
+          </button>
+          <button id="logoutButton" class="secondary-button" type="button">
+            Terminar
+          </button>
+        </div>
+      </div>
     </div>
 
     <script src="./app.js"></script>
