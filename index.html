@@ -19,23 +19,98 @@
           </div>
         </header>
 
-        <div class="card">
-          <h2>Mensaje de Prueba</h2>
-          <p class="muted">Se enviará el mensaje: <strong>Hola</strong></p>
-          <div class="meta">
-            <span>POST</span>
-            <span>stream=false</span>
+        <div id="loginCard" class="card">
+          <h2>Bienvenido</h2>
+          <form id="loginForm" class="form">
+            <label class="field">
+              <span>Usuario</span>
+              <input
+                type="text"
+                id="username"
+                name="username"
+                autocomplete="username"
+                placeholder="Ingresa tu usuario"
+                required
+              />
+            </label>
+            <label class="field">
+              <span>Password</span>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                autocomplete="current-password"
+                placeholder="Ingresa tu password"
+                required
+              />
+            </label>
+            <button id="loginButton" class="primary-button" type="submit">
+              Iniciar sesión
+            </button>
+          </form>
+          <p id="status" class="status">Listo para validar.</p>
+        </div>
+
+        <div id="servicesPanel" class="card services hidden">
+          <p class="user-welcome">Bienvenido, Eduardo Corona (Convenio A)</p>
+          <h3>Servicios disponibles</h3>
+          <div class="services-list">
+            <button id="eventsButton" class="service-button" type="button">
+              Eventos
+            </button>
+            <button
+              id="bankCertificateButton"
+              class="service-button"
+              type="button"
+            >
+              Certificado Bancario
+            </button>
           </div>
-          <button id="sendButton" class="primary-button">Enviar</button>
-          <p id="status" class="status">Listo para enviar.</p>
+          <div id="eventsSection" class="events-section hidden">
+            <h4 class="section-title">Eventos disponibles</h4>
+            <div id="eventsList" class="events-list"></div>
+          </div>
+          <div id="ticketForm" class="ticket-form hidden">
+            <h4 class="section-title">Solicitud de boletos</h4>
+            <p id="ticketSummary" class="ticket-summary"></p>
+            <div class="info-grid">
+              <div class="info-item">
+                <span class="info-label">Nombre</span>
+                <span class="info-value">Eduardo</span>
+              </div>
+              <div class="info-item">
+                <span class="info-label">Apellido</span>
+                <span class="info-value">Corona</span>
+              </div>
+              <div class="info-item">
+                <span class="info-label">Convenio</span>
+                <span class="info-value">A</span>
+              </div>
+              <div class="info-item">
+                <span class="info-label">Email</span>
+                <span class="info-value">ecorona@numia.co</span>
+              </div>
+              <div class="info-item">
+                <span class="info-label">Celular</span>
+                <span class="info-value">5560404738</span>
+              </div>
+            </div>
+            <button class="primary-button" type="button">
+              Continuar
+            </button>
+            <p class="helper">
+              No hay cambios ni devoluciones. Recibirás los boletos digitales
+              vía email.
+            </p>
+          </div>
         </div>
 
         <div class="card small">
-          <h3>Detalles del Request</h3>
+          <h3>Detalles de Validación</h3>
           <ul>
-            <li>Content-Type: application/json</li>
-            <li>Origin: journeybuilder.numia.co</li>
-            <li>x-api-key: **************</li>
+            <li>Fuente: NocoDB</li>
+            <li>Tabla: usuarios</li>
+            <li>Conectado con Journey Builder</li>
           </ul>
         </div>
       </section>
